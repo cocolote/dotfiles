@@ -1,0 +1,238 @@
+"" USABILITY CONFIGURATION ====================================
+
+" don't make vim compatible with vi 
+set nocompatible
+
+" turn on syntax highlighting
+syntax enable
+
+" and show line numbers
+set number
+
+" easy regex
+set magic
+
+" reload files changed outside vim
+set autoread
+
+" encoding is utf 8
+set encoding=utf-8
+set fileencoding=utf-8
+
+" FiraMono font
+set guifont=FiraMono-Regular:h14
+
+" enable matchit plugin which ships with vim and greatly enhances '%'
+runtime macros/matchit.vim
+
+" by default, in insert mode backspace won't delete over line breaks, or 
+" automatically-inserted indentation, let's change that
+set backspace=indent,eol,start
+
+" dont't unload buffers when they are abandoned, instead stay in the
+" background
+" set hidden
+
+" set unix line endings
+set fileformat=unix
+
+" when reading files try unix line endings then dos, also use unix for new
+" buffers
+set fileformats=unix,dos
+
+" save up to 100 marks, enable capital marks
+set viminfo='100,f1
+
+" screen will not be redrawn while running macros, registers or other
+" non-typed comments
+set lazyredraw
+
+" no wrap lines, just continue to the right
+set nowrap
+
+" indentation
+set expandtab       " use spaces instead of tabs
+set autoindent      " autoindent based on line above, works most of the time
+set smartindent     " smarter indent for C-like languages
+set shiftwidth=4    " when reading, tabs are 4 spaces
+set softtabstop=4   " in insert mode, tabs are 4 spaces
+
+" make vim try to detect file types and load plugins for them
+" ruby/css/javascript
+" commands
+" au: autocmd
+" sts: softtabstop (how many spaces use when tab is presed)
+" ts: how to display tabs
+" sw: shiftwidth how many spaces per indent level
+" et: expandtab use speces instead of tabs
+au BufNewFile,BufRead *.rb  setlocal sts=2 ts=2 sw=2 et
+au BufNewFile,BufRead *.css setlocal sts=2 ts=2 sw=2 et
+au BufNewFile,BufRead *.js  setlocal sts=2 ts=2 sw=2 et
+
+" highlight 81 column
+highlight ColorColumn ctermbg=magenta
+call matchadd('ColorColumn', '\%81v', 100)
+
+" highlight search results
+set hlsearch
+" show result while searching
+set incsearch
+
+" folding settings
+set foldmethod=indent   "fold based on indent
+set foldnestmax=10      "deepest fold is 10 levels
+set nofoldenable
+set foldlevel=1
+
+"" COLORS SETTINGS ============================================
+
+" Select colormap: 'soft', 'softlight', 'standard' or 'allblue'
+" let xterm16_colormap = 'allblue'
+
+" Select brightness: 'low', 'med', 'high', 'default' or custom levels.
+" let xterm16_brightness = 'default'
+
+" colo xterm16
+set background=dark
+colo jellybeans
+
+" Inden Guides colors
+" Toggle Indent Guides with ',+ig'
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=darkgrey
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=grey
+
+"" CUSTOMIZATIONS =============================================
+
+" set , as mapleader
+let mapleader = ","
+
+" Easy window split
+nmap <leader>sh  :topleft  vnew<CR>
+nmap <leader>sl  :botright vnew<CR>
+nmap <leader>sk  :topleft  new<CR>
+nmap <leader>sj  :botright new<CR>
+
+" Easy window navigation
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
+" Ctrl-N to disable search match highlight
+nmap <silent> <C-N> :silent noh<CR>
+
+" Space to toggle folds.
+nnoremap <Space> za
+vnoremap <Space> za
+
+" Open NerdTree with ,f
+noremap <leader>f :NERDTreeToggle<CR>
+
+" Use jj to escape from insert mode
+inoremap jj <ESC>
+
+" On file types...
+"   .md files are markdown files
+autocmd BufNewFile,BufRead *.md setlocal ft=markdown
+"   .twig files use html syntax
+autocmd BufNewFile,BufRead *.twig setlocal ft=html
+"   .less files use less syntax
+autocmd BufNewFile,BufRead *.less setlocal ft=less
+"   .jade files use jade syntax
+autocmd BufNewFile,BufRead *.jade setlocal ft=jade
+
+" start autocompletition
+" set omnifunc=syntaxcomplete#Complete
+
+" Show cool status line on one screen as well
+set laststatus=2
+
+" to get the right separators
+set encoding=utf-8
+scriptencoding utf-8
+
+" Set the style of the status line
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'fugitive', 'filename' ] ]
+      \ },
+      \ 'component_function': {
+      \   'fugitive': 'LightLineFugitive',
+      \   'readonly': 'LightLineReadonly',
+      \   'modified': 'LightLineModified',
+      \   'filename': 'LightLineFilename'
+      \ },
+      \ 'separator': { 'left': '⯈', 'right': '⯇' },
+      \ 'subseparator': { 'left': '>', 'right': '<' }
+      \ }
+
+function! LightLineModified()
+    if &filetype == "help"
+        return ""
+    elseif &modified
+        return "≠"
+    elseif &modifiable
+        return ""
+    else
+        return ""
+    endif
+endfunction
+
+function! LightLineReadonly()
+    if &filetype == "help"
+        return ""
+    elseif &readonly
+        return "⮾"
+    else
+        return ""
+    endif
+endfunction
+
+function! LightLineFilename()
+    return ('' != LightLineReadonly() ? LightLineReadonly() . ' ' : '') .
+         \ ('' != expand('%:t') ? expand('%:t') : '[No Name]') .
+         \ ('' != LightLineModified() ? ' ' . LightLineModified() : '')
+endfunction
+
+function! LightLineFugitive()
+    if exists("*fugitive#head")
+        let branch = fugitive#head()
+        return branch != '' ? ''.branch : ''
+    endif
+    return ''
+endfunction
+
+" Use TAB to complete when typing words, else inserts TABs as usual.
+" Uses dictionary and source files to find matching words to complete.
+" "Note: usual completion is on <C-n> but more trouble to press all the time.
+" Never type the same word twice and maybe learn a new spellings!
+" Use the Linux dictionary when spelling is in doubt.
+function! Tab_Or_Complete()
+    if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
+        return "\<C-N>"
+    else
+        return "\<Tab>"
+    endif
+endfunction
+:inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
+:set dictionary="/usr/dict/words"
+
+"" PLUGINS ====================================================
+
+" initiate Vundle
+let &runtimepath.=',$HOME/.vim/bundle/Vundle.vim'
+call vundle#begin()
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" plugins definitions
+Plugin 'scrooloose/nerdtree'             " NerdTree bar on the side to open files
+Plugin 'itchyny/lightline.vim'           " Cool status bar
+Plugin 'tpope/vim-fugitive'              " Add to the status bar the branch
+Plugin 'nathanaelkane/vim-indent-guides' " Indent Guides
+
+" end plugin definition
+call vundle#end()            " required for vundle
