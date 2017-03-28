@@ -87,13 +87,13 @@ export LANG=en_US.UTF-8
 export TERM=xterm-256color
 
 # chruby
-source /usr/local/share/chruby/chruby.sh
-source /usr/local/share/chruby/auto.sh
+#source /usr/local/share/chruby/chruby.sh
+#source /usr/local/share/chruby/auto.sh
 
 # Python virtual environment and wrapper
-export WORKON_HOME=$HOME/.venv
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-source /usr/local/bin/virtualenvwrapper.sh
+#export WORKON_HOME=$HOME/.venv
+#export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+#source /usr/local/bin/virtualenvwrapper.sh
 
 # screenfetch
 # screenfetch -D "Elementary"
