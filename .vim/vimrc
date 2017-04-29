@@ -165,15 +165,15 @@ let g:lightline = {
       \   'modified': 'LightLineModified',
       \   'filename': 'LightLineFilename'
       \ },
-      \ 'separator': { 'left': '', 'right': '' },
-      \ 'subseparator': { 'left': '❭', 'right': '❬' }
+      \ 'separator': { 'left': '❭', 'right': '❬' },
+      \ 'subseparator': { 'left': '|', 'right': '|' }
       \ }
 
 function! LightLineModified()
     if &filetype == "help"
         return ""
     elseif &modified
-        return "☢"
+        return "+"
     elseif &modifiable
         return ""
     else
@@ -185,7 +185,7 @@ function! LightLineReadonly()
     if &filetype == "help"
         return ""
     elseif &readonly
-        return ""
+        return "ro"
     else
         return ""
     endif
@@ -200,7 +200,7 @@ endfunction
 function! LightLineFugitive()
     if exists("*fugitive#head")
         let branch = fugitive#head()
-        return branch != '' ? ''.branch : ''
+        return branch != '' ? 'Y'.branch : ''
     endif
     return ''
 endfunction
