@@ -142,36 +142,6 @@ autocmd BufNewFile,BufRead *.less setlocal ft=less
 "   .jade files use jade syntax
 autocmd BufNewFile,BufRead *.jade setlocal ft=jade
 
-" air-line
-"let g:lightline_powerline_fonts = 1
-
-"if !exists('g:lightline_symbols')
-"let g:lightline_symbols = {}
-"endif
-
-" unicode symbols
-"let g:lightline_left_sep = '»'
-"let g:lightline_left_sep = '▶'
-"let g:lightline_right_sep = '«'
-"let g:lightline_right_sep = '◀'
-"let g:lightline_symbols.linenr = '␊'
-"let g:lightline_symbols.linenr = '␤'
-"let g:lightline_symbols.linenr = '¶'
-"let g:lightline_symbols.branch = '⎇'
-"let g:lightline_symbols.paste = 'ρ'
-"let g:lightline_symbols.paste = 'Þ'
-"let g:lightline_symbols.paste = '∥'
-"let g:lightline_symbols.whitespace = 'Ξ'
-
-" lightline symbols
-"let g:lightline_left_sep = ''
-"let g:lightline_left_alt_sep = ''
-"let g:lightline_right_sep = ''
-"let g:lightline_right_alt_sep = ''
-"let g:lightline_symbols.branch = ''
-"let g:lightline_symbols.readonly = ''
-"let g:lightline_symbols.linenr = ''
-
 " start autocompletition
 " set omnifunc=syntaxcomplete#Complete
 
