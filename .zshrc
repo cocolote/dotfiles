@@ -97,3 +97,5 @@ export TERM=xterm-256color
 
 # screenfetch
 # screenfetch -D "Elementary"
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
