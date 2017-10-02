@@ -95,11 +95,11 @@ set foldlevel=1
 "colo xterm16
 "set background=dark
 "colo jellybeans
-"colo monokai
+colo monokai
 "colo muon
 "colo neonwave
 "colo sourcerer
-colo wellsokai
+"colo wellsokai
 "colorscheme moonshine
 
 " Inden Guides colors
