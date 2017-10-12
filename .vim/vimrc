@@ -20,7 +20,7 @@ set encoding=utf-8
 set fileencoding=utf-8
 
 " FiraMono font
-set guifont=FiraMono-Regular:h14
+"set guifont=FiraMono-Regular:h14
 
 " enable matchit plugin which ships with vim and greatly enhances '%'
 runtime macros/matchit.vim
@@ -96,15 +96,16 @@ set foldlevel=1
 "set background=dark
 "colo jellybeans
 colo monokai
-" set transparent brackground
-hi Normal ctermbg=none
-hi NonText ctermbg=none
-hi LineNr ctermbg=none
 "colo muon
 "colo neonwave
 "colo sourcerer
 "colo wellsokai
 "colorscheme moonshine
+
+" set transparent brackground
+hi Normal ctermbg=none
+hi NonText ctermbg=none
+hi LineNr ctermbg=none
 
 " Inden Guides colors
 " Toggle Indent Guides with ',+ig'
