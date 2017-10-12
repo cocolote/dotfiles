@@ -96,6 +96,10 @@ set foldlevel=1
 "set background=dark
 "colo jellybeans
 colo monokai
+" set transparent brackground
+hi Normal ctermbg=none
+hi NonText ctermbg=none
+hi LineNr ctermbg=none
 "colo muon
 "colo neonwave
 "colo sourcerer
