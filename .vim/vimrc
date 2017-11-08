@@ -68,6 +68,8 @@ set softtabstop=4   " in insert mode, tabs are 4 spaces
 au BufNewFile,BufRead *.rb  setlocal sts=2 ts=2 sw=2 et
 au BufNewFile,BufRead *.css setlocal sts=2 ts=2 sw=2 et
 au BufNewFile,BufRead *.js  setlocal sts=2 ts=2 sw=2 et
+au BufNewFile,BufRead *.ts  setlocal sts=2 ts=2 sw=2 et
+au BufNewFile,BufRead *.ts  set filetype=typescript
 
 " highlight 81 column
 highlight ColorColumn ctermbg=magenta
@@ -322,6 +324,7 @@ Plugin 'scrooloose/nerdtree'             " NerdTree bar on the side to open file
 Plugin 'itchyny/lightline.vim'           " Cool status bar
 Plugin 'tpope/vim-fugitive'              " Add to the status bar the branch
 Plugin 'nathanaelkane/vim-indent-guides' " Indent Guides
+Plugin 'leafgarland/typescript-vim'      " TypeScript colors
 
 " end plugin definition
 call vundle#end()            " required for vundle
