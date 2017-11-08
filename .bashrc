@@ -47,7 +47,7 @@ git_branch()
     
     if [[ -n "$branch" ]]
     then
-        if [[ $(git status | grep -o 'working directory clean') ]]
+        if [[ $(git status | grep -oE 'working (directory|tree) clean') ]]
         then
             echo -e "$branch "
         else
@@ -139,7 +139,16 @@ fi
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
 
+# Add .local to PATH
+export PATH="$PATH:$HOME/.local/bin"
+
+# Add .gem bin to PATH
+export PATH="$PATH:$HOME/.gem/ruby/2.3.0/bin"
+
+# Add .npm_modules to the path
+export PATH="$PATH:$HOME/.npm_modules/bin"
+
 # Ruby rbenv installation
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
+#export PATH="$HOME/.rbenv/bin:$PATH"
+#eval "$(rbenv init -)"
+#export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
