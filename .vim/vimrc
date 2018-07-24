@@ -65,11 +65,12 @@ set softtabstop=4   " in insert mode, tabs are 4 spaces
 " ts: how to display tabs
 " sw: shiftwidth how many spaces per indent level
 " et: expandtab use speces instead of tabs
-au BufNewFile,BufRead *.rb  setlocal sts=2 ts=2 sw=2 et
-au BufNewFile,BufRead *.css setlocal sts=2 ts=2 sw=2 et
-au BufNewFile,BufRead *.js  setlocal sts=2 ts=2 sw=2 et
-au BufNewFile,BufRead *.ts  setlocal sts=2 ts=2 sw=2 et
-au BufNewFile,BufRead *.ts  set filetype=typescript
+au BufNewFile,BufRead *.rb   setlocal sts=2 ts=2 sw=2 et
+au BufNewFile,BufRead *.css  setlocal sts=2 ts=2 sw=2 et
+au BufNewFile,BufRead *.js   setlocal sts=2 ts=2 sw=2 et
+au BufNewFile,BufRead *.ts   setlocal sts=2 ts=2 sw=2 et
+au BufNewFile,BufRead *.scss setlocal sts=2 ts=2 sw=2 et
+au BufNewFile,BufRead *.ts   set filetype=typescript
 
 " highlight 81 column
 highlight ColorColumn ctermbg=magenta
@@ -95,14 +96,16 @@ set foldlevel=1
 "let xterm16_brightness = 'med'
 
 "colo xterm16
-"set background=dark
+set background=dark
 "colo jellybeans
-colo monokai
+"colo monokai
 "colo muon
 "colo neonwave
 "colo sourcerer
 "colo wellsokai
 "colorscheme moonshine
+colorscheme Base2Tone_EveningDark
+
 
 " set transparent brackground
 hi Normal ctermbg=none
@@ -323,8 +326,8 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdtree'             " NerdTree bar on the side to open files
 Plugin 'itchyny/lightline.vim'           " Cool status bar
 Plugin 'tpope/vim-fugitive'              " Add to the status bar the branch
-Plugin 'nathanaelkane/vim-indent-guides' " Indent Guides
 Plugin 'leafgarland/typescript-vim'      " TypeScript colors
+Plugin 'yggdroot/indentline'             " Indent lines
 
 " end plugin definition
 call vundle#end()            " required for vundle

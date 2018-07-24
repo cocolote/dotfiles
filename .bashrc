@@ -106,6 +106,19 @@ fi
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
+print256_colors()
+{
+    for i in {0..255}
+    do
+        #printf "\x1b[48;5;%sm%3d\e[0m " "$i" "$i"
+        printf "\e[38;5;%sm%s\e[0m " "$i" "$i"
+        if (( i == 15 )) || (( i > 15 )) && (( (i-15) % 6 == 0 ))
+        then
+            printf "\n";
+        fi
+    done
+}
+
 # some more ls aliases
 alias ll='ls -al --group-directories-first'
 alias la='ls -A --group-directories-first'
@@ -147,6 +160,10 @@ export PATH="$PATH:$HOME/.gem/ruby/2.3.0/bin"
 
 # Add .npm_modules to the path
 export PATH="$PATH:$HOME/.npm_modules/bin"
+
+# Set VIM as default editor
+export VISUAL=vim
+export EDITOR=$VISUAL
 
 # Ruby rbenv installation
 #export PATH="$HOME/.rbenv/bin:$PATH"
